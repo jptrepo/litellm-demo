@@ -16,5 +16,6 @@ services:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_REGION_NAME=${AWS_REGION_NAME}
-    command: ["--config", "/app/config.yaml", "--port", "4000", "--num_workers", "8"]
+    command:
+      ["--config", "/app/config.yaml", "--port", "4000", "--num_workers", "8"]
     restart: unless-stopped

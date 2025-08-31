@@ -54,7 +54,7 @@ model_list:
   #     aws_region_name: os.environ/AWS_REGION_NAME
 
 general_settings:
-  master_key: sk-1234  # Change this to a secure key
+  master_key: sk-1234 # Change this to a secure key
   # Uncomment the following if you want to use a database for key management
   # database_url: "postgresql://user:password@localhost:5432/litellm_db"
 

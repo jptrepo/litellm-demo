@@ -13,6 +13,7 @@ cp env.example .env
 ```
 
 Edit `.env` file with your actual API keys:
+
 - OpenAI API key from https://platform.openai.com/api-keys
 - Anthropic API key from https://console.anthropic.com/
 - Google API key from https://aistudio.google.com/app/apikey
@@ -26,6 +27,7 @@ docker-compose up -d
 ```
 
 This will:
+
 - Pull the latest LiteLLM Docker image
 - Start the proxy server on port 4000
 - Mount your configuration file
@@ -34,6 +36,7 @@ This will:
 ### 3. Test the setup
 
 Test with curl:
+
 ```bash
 curl -X POST 'http://localhost:4000/v1/chat/completions' \
   -H 'Content-Type: application/json' \
@@ -45,6 +48,7 @@ curl -X POST 'http://localhost:4000/v1/chat/completions' \
 ```
 
 Or test with Python:
+
 ```python
 from openai import OpenAI
 
@@ -63,12 +67,14 @@ print(response.choices[0].message.content)
 ### 4. Access the UI
 
 Open your browser and go to:
+
 - API Documentation: http://localhost:4000/docs
 - Admin UI: http://localhost:4000/ui
 
 ## Available Models
 
 The current configuration includes:
+
 - **OpenAI**: gpt-4o, gpt-4o-mini, gpt-3.5-turbo
 - **Anthropic**: claude-3-5-sonnet, claude-3-5-haiku
 - **Google**: gemini-pro, gemini-flash
@@ -76,12 +82,15 @@ The current configuration includes:
 ## Configuration
 
 ### Modify Models
+
 Edit `litellm-config.yaml` to add/remove models or change configurations.
 
 ### Change Master Key
+
 Update the `master_key` in `litellm-config.yaml` for security.
 
 ### Add Database
+
 Uncomment and configure the `database_url` in `litellm-config.yaml` for persistent key management.
 
 ## Commands
