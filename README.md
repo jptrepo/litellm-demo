@@ -1,22 +1,38 @@
 # LiteLLM Docker Setup
 
-This setup uses Docker Compose to run LiteLLM proxy server with multiple LLM providers.
+This setup uses Docker Compose to run LiteLM proxy server with multiple LLM providers.
 
-## Quick Start
+## 📁 Project Files
+
+This workspace contains:
+
+- [`docker-compose.yml`](docker-compose.yml) - Docker Compose configuration
+- [`litellm-config.yaml`](litellm-config.yaml) - LiteLLM model configuration
+- [`env.example`](env.example) - Template for environment variables
+- [`.env`](.env) - Your actual API keys (git-ignored)
+- [`test_proxy.py`](test_proxy.py) - Test script for the proxy
+- [`.gitignore`](.gitignore) - Protects sensitive files from git
+
+## 🚀 Quick Start
 
 ### 1. Set up your API keys
 
-Copy the example environment file and add your API keys:
+**⚠️ The `.env` file already exists but needs your actual API keys!**
+
+Edit the existing `.env` file with your actual API keys:
 
 ```bash
-cp env.example .env
+# Edit your .env file
+code .env
+# or
+nano .env
 ```
 
-Edit `.env` file with your actual API keys:
+Add your API keys:
 
-- OpenAI API key from https://platform.openai.com/api-keys
-- Anthropic API key from https://console.anthropic.com/
-- Google API key from https://aistudio.google.com/app/apikey
+- OpenAI API key from <https://platform.openai.com/api-keys>
+- Anthropic API key from <https://console.anthropic.com/>
+- Google API key from <https://aistudio.google.com/app/apikey>
 - Azure OpenAI credentials (if using Azure)
 - AWS credentials (if using Bedrock)
 
@@ -64,12 +80,26 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-### 4. Access the UI
+### 4. Test with the provided script
+
+Run the included test script:
+
+```bash
+python test_proxy.py
+```
+
+This script will:
+
+- Check if the proxy is running
+- Test multiple models (OpenAI, Anthropic, Google)
+- Show you exactly what's working
+
+### 5. Access the UI
 
 Open your browser and go to:
 
-- API Documentation: http://localhost:4000/docs
-- Admin UI: http://localhost:4000/ui
+- API Documentation: <http://localhost:4000/docs>
+- Admin UI: <http://localhost:4000/ui>
 
 ## Available Models
 
@@ -120,6 +150,17 @@ docker-compose pull && docker-compose up -d
 
 ## Security Notes
 
-- Change the default master key (`sk-1234`) to something secure
-- Keep your `.env` file private and don't commit it to version control
+- **Never commit `.env` files** - They contain sensitive API keys (protected by `.gitignore`)
+- Change the default master key (`sk-1234`) to something secure in `litellm-config.yaml`
+- The `.gitignore` file ensures `.env` won't be tracked by git
 - Consider using a database for production deployments
+
+## 🎯 What's Next?
+
+Your workspace is ready! The next logical steps are:
+
+1. **Create a feature branch**: `git checkout -b feature/litellm-docker-setup`
+2. **Add your API keys** to the `.env` file
+3. **Start the Docker setup**: `docker-compose up -d`
+4. **Test with the script**: `python test_proxy.py`
+5. **Commit your working setup** when everything works
