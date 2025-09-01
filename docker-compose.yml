@@ -17,6 +17,8 @@ services:
       # - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       # - AWS_REGION_NAME=${AWS_REGION_NAME}
       - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
+      - LITELLM_SALT_KEY=${LITELLM_SALT_KEY}
+      - STORE_MODEL_IN_DB=True
       - DATABASE_URL=postgresql://litellm:${DB_PASSWORD}@db:5432/litellm_db
     command:
       ["--config", "/app/config.yaml", "--port", "4000", "--num_workers", "8"]
